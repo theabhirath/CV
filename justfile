@@ -1,0 +1,8 @@
+biber-cv:
+    @biber cv
+
+compile-cv:
+    @xelatex cv.tex
+
+clean:
+    @rm -f *.aux *.bbl *.bcf *.blg *.log *.out *.run.xml *.toc *.fls *.fdb_latexmk *.synctex.gz
