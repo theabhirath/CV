@@ -8,10 +8,10 @@
     lastname: "Anand",
     contacts: (
       (text: "abhirath@umich.edu", icon: "envelope", link: "mailto:abhirath@umich.edu"),
-      (text: "theabhirath.com", icon: "home", link: "https://theabhirath.com"),
+      (text: "theabhirath.com", icon: "globe", link: "https://theabhirath.com"),
       (text: "theabhirath", icon: "github", link: "https://github.com/theabhirath"),
       (text: "theabhirath", icon: "linkedin", link: "https://www.linkedin.com/in/theabhirath"),
-      (text: "Abhirath Anand", icon: "graduation-cap", link: "https://scholar.google.com/citations?user=312gafgAAAAJ"),
+      (text: "Abhirath Anand", icon: "google-scholar", link: "https://scholar.google.com/citations?user=312gafgAAAAJ"),
     ),
   ),
   paper-size: "a4",

@@ -1,0 +1,48 @@
+name: Publish CV
+
+# Build cv.pdf on every push to main and commit it to the website repo as
+# public/cv.pdf. The website redeploys (Vercel) when that commit lands.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: publish-cv
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out CV
+        uses: actions/checkout@v7
+
+      - name: Install Typst
+        uses: typst-community/setup-typst@v5
+        with:
+          typst-version: 0.15.1
+
+      - name: Build PDF
+        run: typst compile --font-path fonts --ignore-system-fonts cv.typ cv.pdf
+
+      - name: Check out website
+        uses: actions/checkout@v7
+        with:
+          repository: theabhirath/theabhirath.com
+          ssh-key: ${{ secrets.WEBSITE_DEPLOY_KEY }}
+          path: website
+
+      - name: Commit PDF to website
+        working-directory: website
+        run: |
+          cp ../cv.pdf public/cv.pdf
+          git add public/cv.pdf
+          if git diff --cached --quiet; then
+            echo "cv.pdf unchanged"
+            exit 0
+          fi
+          git config user.name "Abhirath Anand"
+          git config user.email "74202102+theabhirath@users.noreply.github.com"
+          git commit -m "Update CV (theabhirath/CV@${GITHUB_SHA::7})"
+          git push

@@ -4,6 +4,12 @@
 
 #cvhonors(
   cvhonor(
+    [hospitraceR], // Award
+    cvlink("https://github.com/theabhirath/hospitraceR")[GitHub repository], // Event
+    [Genomic Epidemiology], // Location
+    [2025], // Date(s)
+  ),
+  cvhonor(
     [Compiler for toy language "ERPLAG"], // Award
     cvlink("https://github.com/theabhirath/erplag-compiler")[GitHub repository], // Event
     [Compiler Design], // Location
