@@ -1,8 +1,5 @@
-biber-cv:
-    @biber cv
-
 compile-cv:
-    @xelatex cv.tex
+    @typst compile --font-path fonts --ignore-system-fonts cv.typ cv.pdf
 
-clean:
-    @rm -f *.aux *.bbl *.bcf *.blg *.log *.out *.run.xml *.toc *.fls *.fdb_latexmk *.synctex.gz
+watch-cv:
+    @typst watch --font-path fonts --ignore-system-fonts cv.typ cv.pdf
